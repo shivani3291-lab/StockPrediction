@@ -14,12 +14,13 @@ import json
 
 import yfinance as yf
 import datetime as dt
-import qrcode
+
 
 from .models import Project
 
 from sklearn.linear_model import LinearRegression
 from sklearn import preprocessing, model_selection, svm
+
 
 
 
@@ -203,9 +204,11 @@ def predict(request, ticker_value, number_of_days):
     clf.fit(X_train,y_train)
     # Prediction Score
     confidence = clf.score(X_test, y_test)
+    print(confidence)
     # Predicting for 'n' days stock data
     forecast_prediction = clf.predict(X_forecast)
     forecast = forecast_prediction.tolist()
+    
 
 
     # ========================================== Plotting predicted data ======================================
